@@ -1,9 +1,14 @@
+import "./App.css"
+import { AppProvider } from "./utils/context";
+import Layout from "./pages/layout";
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <AppProvider>
+      <div className="App" >
+        <Layout/>
+      </div>
+    </AppProvider>
   );
 }
 
