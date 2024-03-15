@@ -1,0 +1,93 @@
+.weather_info {
+  font-family: Arial, sans-serif;
+  width: 300px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px 20px 20px 20px;
+  background-color: #AECADF;
+}
+
+.info_menu {
+    padding: 20px;
+}
+
+
+.date_time {
+  display: flex;
+  justify-content: space-between;
+  background-color: #BBD7EC;
+  padding: 20px;
+  border-radius: 20px 20px 0px 0px;
+  
+}
+
+.date {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.time {
+  font-size: 14px;
+}
+
+.temperature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.weather_icon {
+    width: 65px;
+    object-fit: cover;
+}
+
+.temperature .value {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.real_feel {
+    font-size: 14px;  
+}
+
+.wind {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+
+
+
+.wind .wind_speed {
+  font-size: 14px;
+}
+
+.sunrise_sunset {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.sunrise_sunset .sunrise {
+  font-size: 14px;
+}
+
+.sunrise_sunset .sunset {
+  font-size: 14px;
+}
+
+.pressure_humidity {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pressure_humidity .pressure {
+  font-size: 14px;
+}
+
+.pressure_humidity .humidity {
+  font-size: 14px;
+}

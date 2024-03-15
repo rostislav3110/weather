@@ -1,6 +1,5 @@
 import React from 'react'
 import { useApp } from '../utils/context';
-import Header from '../components/header';
 import { dark_mode, light_mode } from "../utils/theme_style";
 import Weather from './Weather';
 
@@ -11,7 +10,6 @@ export default function Layout() {
 
   return (
     <div style={{ ...currentTheme.app_box}}>
-        <Header/>
         <Weather/>
     </div>
   )

@@ -1,46 +1,44 @@
-import { createContext, useContext, useState} from "react";
+import { createContext, useContext, useState } from "react";
 import { WEATHER_URL } from "./weather_api";
-
 
 const AppContent = createContext();
 
 export const useApp = () => {
-    return useContext(AppContent)
+  return useContext(AppContent);
 };
 
-export const AppProvider = ({children}) => {
-    const [weatherState, setWeather] = useState([]);
-    const [isDarkMode, setIsDarkMode] = useState(false);
+export const AppProvider = ({ children }) => {
+  const [weatherState, setWeather] = useState([]);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-    const getWeatherData = async (...objValue) => {
-        const searchValue = objValue[0] || "ukraine";
-        try {
-          const response = await fetch(
-            `${WEATHER_URL.start_url}${objValue[1]}?${WEATHER_URL.api_url}&q=${searchValue}&aqi=yes&lang=uk&${objValue[2]}`
-          );
-          const data = await response.json();
-          setWeather(data);
-          return data;
-        } catch (error) {
-          console.error(error);
-        }
-      };
+  const getWeatherData = async (...objValue) => {
+    const searchValue = objValue[0] || "ukraine";
+    try {
+      const response = await fetch(
+        `${WEATHER_URL.start_url}${objValue[1]}?${WEATHER_URL.api_url}&q=${searchValue}&aqi=yes&lang=uk&${objValue[2]}`
+      );
+      const data = await response.json();
+      setWeather(data);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-      function toogleTheme() {
-        setIsDarkMode(!isDarkMode);
-      }
-      
+  function toogleTheme() {
+    setIsDarkMode(!isDarkMode);
+  }
 
-
-
-    return (
-        <AppContent.Provider value={{
-            weatherState,
-            isDarkMode,
-            toogleTheme,
-            getWeatherData
-        }}>
-            {children}
-        </AppContent.Provider>
-    )
-}
+  return (
+    <AppContent.Provider
+      value={{
+        weatherState,
+        isDarkMode,
+        toogleTheme,
+        getWeatherData,
+      }}
+    >
+      {children}
+    </AppContent.Provider>
+  );
+};

@@ -2,7 +2,6 @@ export const dark_mode = {
     app_box: {
         backgroundColor: "#111015",
         color: "#fff",
-        
     }
 }
 

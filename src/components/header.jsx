@@ -6,15 +6,13 @@ import React, { useState, useEffect } from "react";
 import { WEATHER_URL } from "../utils/weather_api";
 import { useApp } from "../utils/context";
 import Login from "../utils/auth/login";
-import { SnackbarProvider, enqueueSnackbar } from 'notistack';
+import { SnackbarProvider, enqueueSnackbar } from "notistack";
 
 export default function Header() {
   const { toogleTheme } = useApp();
   const { weatherState, getWeatherData } = useApp();
   const [weather, setWeather] = useState(weatherState);
   const [inputValue, setInputValue] = useState("");
-
- 
 
   const forecastData = async () => {
     try {
@@ -42,18 +40,23 @@ export default function Header() {
     forecastData();
   }
 
-  
- 
-
   return (
     <header>
       <div className={headerstyle.container}>
         <div className={headerstyle.Menu}>
-          <SnackbarProvider/>
-          <button onClick={() => enqueueSnackbar("Sorry, don't working menu!")} className={headerstyle.button_grid}>
+          <SnackbarProvider />
+          <button
+            onClick={() => enqueueSnackbar("Sorry, don't working menu!")}
+            className={headerstyle.button_grid}
+          >
             <GridViewIcon />
           </button>
-          <button onClick={() => enqueueSnackbar("Sorry, don't working notification!")} className={headerstyle.button_ntf}>
+          <button
+            onClick={() =>
+              enqueueSnackbar("Sorry, don't working notification!")
+            }
+            className={headerstyle.button_ntf}
+          >
             <NotificationsIcon />
           </button>
           <div className={headerstyle.location}>
@@ -94,4 +97,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
