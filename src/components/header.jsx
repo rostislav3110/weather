@@ -29,7 +29,7 @@ export default function Header() {
 
   useEffect(() => {
     forecastData();
-  }, []);
+  }, [setInputValue]);
 
   function handleInputChange(e) {
     setInputValue(e.target.value);

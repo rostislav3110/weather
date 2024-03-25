@@ -1,8 +1,10 @@
 import React from "react";
 import localstyle from "../style/weatherlocation.module.css";
-import image from "../assets/Sunny.png";
+import { useApp } from "../utils/context";
 
-function ForecastLocation() {
+function CurrentForecast() {
+  const { weatherState } = useApp();
+
   const currentDate = new Date().toLocaleDateString(undefined, {
     weekday: "long",
   });
@@ -13,13 +15,6 @@ function ForecastLocation() {
 
   return (
     <div className="forecastLoction_container">
-      {/* <div className="filters">
-        <h3>Today, Tomorrow, Next 7 days</h3>
-        <div className="days">
-          <button>Forecast</button>
-          <button>Air Quality</button>
-        </div>
-      </div> */}
       
 
       <div className={localstyle.weather_info}>
@@ -29,24 +24,31 @@ function ForecastLocation() {
         </div>
         <div className={localstyle.info_menu}>
           <div className={localstyle.temperature}>
-            <span className={localstyle.value}>5°</span>
+            <span className={localstyle.value}>
+              {Math.round(weatherState.current?.temp_c)}°
+            </span>
             <img
-              src={image}
+              src={weatherState.current?.condition.icon}
               className={localstyle.weather_icon}
               alt="weather icon"
             />
           </div>
-          <span className={localstyle.real_feel}>Real Feel: 15°</span>
+
           <div className={localstyle.wind}>
-            <span className={localstyle.wind_speed}>Wind N-E:25 km/h</span>
-          </div>
-          <div className={localstyle.sunrise_sunset}>
-            <span className={localstyle.sunrise}>Sunrise: 5:30 </span>
-            <span className={localstyle.sunset}>Sunset:6:40 </span>
+            <span className={localstyle.real_feel}>
+              Real Feel: {Math.round(weatherState.current?.feelslike_c)}°
+            </span>
+            <span className={localstyle.wind_speed}>
+              Wind N-E: {Math.round(weatherState.current?.wind_kph)}km/h
+            </span>
           </div>
           <div className={localstyle.pressure_humidity}>
-            <span className={localstyle.pressure}>Pressure: 100MB</span>
-            <span className={localstyle.humidity}>Humidity: 51%</span>
+            <span className={localstyle.pressure}>
+              Pressure: {weatherState.current?.pressure_mb}MB
+            </span>
+            <span className={localstyle.humidity}>
+              Humidity: {weatherState.current?.humidity}%
+            </span>
           </div>
         </div>
       </div>
@@ -54,4 +56,4 @@ function ForecastLocation() {
   );
 }
 
-export default ForecastLocation;
+export default CurrentForecast;

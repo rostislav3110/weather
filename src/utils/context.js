@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext,  useState } from "react";
 import { WEATHER_URL } from "./weather_api";
 
 const AppContent = createContext();
@@ -10,6 +10,7 @@ export const useApp = () => {
 export const AppProvider = ({ children }) => {
   const [weatherState, setWeather] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [weatherIndex, setWeatherIndex] = useState(0);
 
   const getWeatherData = async (...objValue) => {
     const searchValue = objValue[0] || "ukraine";
@@ -29,6 +30,13 @@ export const AppProvider = ({ children }) => {
     setIsDarkMode(!isDarkMode);
   }
 
+
+  const updateWeatherState = (newIndex) => {
+    setWeatherIndex(newIndex);
+  };
+
+  
+
   return (
     <AppContent.Provider
       value={{
@@ -36,6 +44,8 @@ export const AppProvider = ({ children }) => {
         isDarkMode,
         toogleTheme,
         getWeatherData,
+        weatherIndex,
+        updateWeatherState
       }}
     >
       {children}
