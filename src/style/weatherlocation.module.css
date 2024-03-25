@@ -1,24 +1,47 @@
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+}
+
+
+
 .weather_info {
   font-family: Arial, sans-serif;
   width: 300px;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 20px 20px 20px 20px;
-  background-color: #AECADF;
+  border-radius: 20px;
+  background-color: #aecadf;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: appear 0.5s ease forwards;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .info_menu {
-    padding: 20px;
+  padding: 20px;
 }
-
 
 .date_time {
   display: flex;
   justify-content: space-between;
-  background-color: #BBD7EC;
+  background-color: #bbd7ec;
   padding: 20px;
-  border-radius: 20px 20px 0px 0px;
-  
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .date {
@@ -33,50 +56,38 @@
 .temperature {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
   justify-content: space-between;
+  margin-bottom: 10px;
+  position: relative;
 }
 
 .weather_icon {
-    width: 65px;
-    object-fit: cover;
+  width: 65px;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .temperature .value {
   font-size: 36px;
   font-weight: bold;
+  transition: transform 0.3s ease;
 }
 
 .real_feel {
-    font-size: 14px;  
+  font-size: 14px;
+  transition: transform 0.3s ease;
 }
 
 .wind {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  margin-top: 10px;
 }
-
-
-
 
 .wind .wind_speed {
   font-size: 14px;
-}
-
-.sunrise_sunset {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.sunrise_sunset .sunrise {
-  font-size: 14px;
-}
-
-.sunrise_sunset .sunset {
-  font-size: 14px;
+  transition: transform 0.3s ease;
 }
 
 .pressure_humidity {
@@ -84,10 +95,54 @@
   justify-content: space-between;
 }
 
-.pressure_humidity .pressure {
-  font-size: 14px;
-}
-
+.pressure_humidity .pressure,
 .pressure_humidity .humidity {
   font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.temperature:hover .value,
+.real_feel:hover,
+.wind:hover .wind_speed,
+.pressure_humidity:hover .pressure,
+.pressure_humidity:hover .humidity,
+.weather_icon:hover {
+  transform: scale(1.1);
+}
+
+/*buuton*/
+
+
+
+
+
+
+input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+label {
+  color: #332f35;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px 20px;
+}
+
+input[type=radio]:checked + label{
+  color: #301a5a ;
+  background: #000000;
+}
+
+label + input[type=radio] + label {
+  border-left: solid 3px #6d6b6e;
+}
+.radio_group {
+  border: solid 3px #332f35;
+  display: inline-block;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
 }
